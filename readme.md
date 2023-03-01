@@ -12,3 +12,18 @@ Personal nixpkgs repository
 # either clone the repository and build or:
 nix-build https://github.com/sogreatandpowerfull/nixpkgs/archive/experimental.tar.gz -A hblock
 ```
+
+Using it in your `configuration.nix`:
+```nix
+{pkgs, ...}: {
+  nixpkgs.config.packageOverrides = pkgs: {
+    sogreatandpowerful = import (builtins.fetchTarball "https://github.com/sogreatandpowerfull/nixpkgs/archive/experimental.tar.gz") {
+      inherit pkgs;
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+    sogreatandpowerful.hblock
+  ];
+}
+```
