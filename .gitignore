@@ -1,0 +1,21 @@
+# Nix build and package directories
+result
+result-*
+*.drv
+*.gc-info
+*.log
+*.narinfo
+*.narhash
+*.nomad-meta
+*.sig
+*.store
+*.tar.xz
+*.tmp
+*.xo
+
+# Nix flakes
+.flake.lock
+.flake-metadata.json
+.flake-compat-version
+.nix*
+.lock*
