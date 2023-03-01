@@ -10,17 +10,17 @@ stdenvNoCC.mkDerivation rec {
 
   meta = with pkgs.lib; {
     description = "A POSIX-compliant shell script for blocking ads, malware and tracking domains";
-    homepage = "https://github.com/hectorm/hblock";
+    homepage = "https://github.com/hectorm/${pname}";
     license = licenses.mit;
     maintainers = with maintainers; [sogreatandpowerful];
-    mainProgram = "hblock";
+    mainProgram = "${pname}";
     # Mark broken packages as broken packages or travis (and consequently caching) will fail
     broken = true;
   };
 
   src = pkgs.fetchFromGitHub {
     owner = "hectorm";
-    repo = "hblock";
+    repo = "${pname}";
     rev = "v${version}";
     sha256 = "1j0ypfh2hylhihx3xis76aafmwz8cqv0n2ndyr3pbr5cql5gzrf8";
   };
@@ -31,11 +31,17 @@ stdenvNoCC.mkDerivation rec {
   # TODO(sogreatandpowerful): Add systemd service
   # <https://github.com/hectorm/hblock/tree/master/resources/systemd>
   installPhase = ''
-    install -Dm744 $src/hblock $out/bin/hblock
+    install -Dm744 $src/${pname} $out/bin/${pname}
     runHook postInstall
   '';
 
+  doInstallCheck = true;
+
+  installCheckPhase = ''
+    $out/bin/${pname} --version
+  '';
+
   postInstall = ''
-    installManPage hblock.1
+    installManPage ${pname}.1
   '';
 }
