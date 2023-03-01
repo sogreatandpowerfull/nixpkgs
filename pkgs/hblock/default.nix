@@ -25,8 +25,8 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "1j0ypfh2hylhihx3xis76aafmwz8cqv0n2ndyr3pbr5cql5gzrf8";
   };
 
-  buildInputs = [pkgs.coreutils];
-  nativeBuildInputs = [pkgs.installShellFiles pkgs.makeWrapper];
+  buildInputs = with pkgs; [coreutils curl wget];
+  nativeBuildInputs = with pkgs; [installShellFiles makeWrapper];
 
   # TODO(sogreatandpowerful): Add systemd service
   # <https://github.com/hectorm/hblock/tree/master/resources/systemd>
