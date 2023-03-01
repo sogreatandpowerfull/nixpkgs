@@ -28,6 +28,15 @@ Using it in your `configuration.nix`:
   ];
 }
 ```
+N.B: Using `builtins.fetchTarball` without a sha256 will only cache the download for 1 hour by default, so you need internet access almost every time you build something. You can pin the version if you don't want that:
+```nix
+builtins.fetchTarball {
+  # Get the revision by choosing a version from https://github.com/sogreatandpowerfull/nixpkgs/commits/experimental
+  url = "https://github.com/sogreatandpowerfull/nixpkgs/archive/<revision>.tar.gz";
+  # Get the hash by running `nix-prefetch-url --unpack <url>` on the above url
+  sha256 = "<revision-sha256>";
+}
+```
 
 ## Note
 `hblock` requires root permission to work, so you need to use `sudo` or `doas`. As `hblock` modifies the hosts file (`/etc/hosts`), you'll also need to add the following to your `configuration.nix`:
