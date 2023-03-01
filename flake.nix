@@ -1,5 +1,5 @@
 {
-  description = "Personal Nix pkgs repository";
+  description = "Personal nixpkgs repository";
 
   inputs = {nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";};
 
