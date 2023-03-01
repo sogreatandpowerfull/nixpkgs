@@ -11,6 +11,7 @@ Personal nixpkgs repository
 # build example
 # either clone the repository and build or:
 nix-build https://github.com/sogreatandpowerfull/nixpkgs/archive/experimental.tar.gz -A hblock
+# executable available in ./result/bin/hblock
 ```
 
 Using it in your `configuration.nix`:
@@ -26,4 +27,11 @@ Using it in your `configuration.nix`:
     sogreatandpowerful.hblock
   ];
 }
+```
+
+## Note
+`hblock` requires root permission to work, so you need to use `sudo` or `doas`. As `hblock` modifies the hosts file (/etc/hosts), you'll also need to add the following to your `configuration.nix`:
+```nix
+# Required for hblock
+environment.etc.hosts.mode = "0644";
 ```
