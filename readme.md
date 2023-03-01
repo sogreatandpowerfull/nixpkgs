@@ -8,10 +8,10 @@ Personal nixpkgs repository
 
 ## Usage
 ```bash
-# build example
-# either clone the repository and build or:
+# Build example
+# Either clone the repository and build or:
 nix-build https://github.com/sogreatandpowerfull/nixpkgs/archive/experimental.tar.gz -A hblock
-# executable available in ./result/bin/hblock
+# Executable available in ./result/bin/hblock
 ```
 
 Using it in your `configuration.nix`:
