@@ -1,4 +1,4 @@
-## nixpkgs
+## About
 Personal nixpkgs repository
 
 ## Packages
